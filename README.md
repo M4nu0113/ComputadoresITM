@@ -12,8 +12,8 @@ No considere un modelo con tablas de referencia como marca, sedes, pais, ciudad,
 Sólo considere las entidades sugeridas: agencia, cliente, tipo de computador, computador y venta.
 
 ## Integrantes
-Juan Camilo Duarte Vasco
-Manuela Estrada Villada
+- Juan Camilo Duarte Vasco
+- Manuela Estrada Villada
 
 ## Diagrama de la base de datos
 ![Captura de pantalla 2025-03-12 215625](https://github.com/user-attachments/assets/68d93255-0021-47d4-9578-5bb04f7706cc)
