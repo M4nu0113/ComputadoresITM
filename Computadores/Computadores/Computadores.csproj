@@ -162,20 +162,45 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Clases\clsComputador.cs" />
+    <Compile Include="Controllers\ComputadoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Agencia.cs">
+      <DependentUpon>DBComputadores.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cliente.cs">
+      <DependentUpon>DBComputadores.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Computador.cs">
+      <DependentUpon>DBComputadores.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DBComputadores.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBComputadores.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBComputadores.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBComputadores.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DBComputadores.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBComputadores.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>DBComputadores.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoComputador.cs">
+      <DependentUpon>DBComputadores.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Venta.cs">
+      <DependentUpon>DBComputadores.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -202,6 +227,12 @@
     <Content Include="Models\DBComputadores.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DBComputadores.Context.cs</LastGenOutput>
+      <DependentUpon>DBComputadores.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\DBComputadores.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBComputadores.edmx</DependentUpon>
+      <LastGenOutput>DBComputadores.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -232,9 +263,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBComputadores.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\DBComputadores.edmx.diagram">
+    <Content Include="Models\DBComputadores.edmx.diagram">
       <DependentUpon>DBComputadores.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
