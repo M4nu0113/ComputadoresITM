@@ -4,16 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b257a4e3af8641419b57fe2bba434326" Name="Diagram1">
-        <EntityTypeShape EntityType="DBComputadoresModel.Agencia" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBComputadoresModel.Cliente" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBComputadoresModel.Computador" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBComputadoresModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBComputadoresModel.TipoComputador" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBComputadoresModel.Venta" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="39a716e16b8c44659250caeb11a16096" Name="Diagram1">
+        <EntityTypeShape EntityType="DBComputadoresModel.Agencia" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBComputadoresModel.Cliente" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBComputadoresModel.Computador" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBComputadoresModel.ImagenesComp" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBComputadoresModel.sysdiagram" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBComputadoresModel.TipoComputador" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBComputadoresModel.Venta" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="DBComputadoresModel.FK_Venta_Agencia" ManuallyRouted="false" />
         <AssociationConnector Association="DBComputadoresModel.FK_Venta_Cliente" ManuallyRouted="false" />
         <AssociationConnector Association="DBComputadoresModel.FK_Computador_TipoComputador" ManuallyRouted="false" />
+        <AssociationConnector Association="DBComputadoresModel.FK_Imagen_Computador" ManuallyRouted="false" />
         <AssociationConnector Association="DBComputadoresModel.FK_Venta_Computador" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

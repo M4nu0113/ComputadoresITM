@@ -9,7 +9,7 @@ namespace Computadores.Clases
 {
     public class clsComputador
     {
-        private DBComputadoresEntities dbComputadores = new DBComputadoresEntities();
+        private DBComputadoresEntities2 dbComputadores = new DBComputadoresEntities2();
 
         public Computador computador { get; set; }
 
@@ -117,6 +117,69 @@ namespace Computadores.Clases
             catch (Exception ex)
             {
                 respuesta = "Error al eliminar computador: " + ex.Message;
+            }
+            return respuesta;
+        }
+
+        public string GrabarImagenComputadora(int codigoComputador, List<string> Imagenes)
+        {
+            string respuesta = "";
+            try
+            {
+                foreach (string nombreImagen in Imagenes)
+                {
+                    ImagenesComp img = new ImagenesComp();
+                    img.CodigoComputador = codigoComputador;
+                    img.NombreImagen = nombreImagen;
+                    dbComputadores.ImagenesComps.Add(img);
+                    dbComputadores.SaveChanges();
+                }
+                return "Imagenes grabadas correctamente en la base de datos";
+
+            }
+            catch (Exception ex)
+            {
+                respuesta = "Error al grabar imagen: " + ex.Message;
+            }
+            return respuesta;
+        }
+        public IQueryable ListarImagenesxComputador(int codigoComputador)
+        {
+            return from C in dbComputadores.Set<Computador>()
+                   join TC in dbComputadores.Set<TipoComputador>()
+                   on C.CodigoTipo equals TC.Codigo
+                   join IC in dbComputadores.Set<ImagenesComp>()
+                   on C.Codigo equals IC.CodigoComputador
+                   where C.Codigo == codigoComputador
+                   orderby IC.NombreImagen
+                   select new
+                   {
+                       codigoTipoProducto = TC.Codigo,
+                       tipoProducto = TC.Descripcion,
+                       codigoComputador = C.Codigo,
+                       imagen = IC.NombreImagen
+                   };
+        }
+        public string EliminarImagenComputador(string nombreImagen)
+        {
+            string respuesta = "";
+            try
+            {
+                ImagenesComp img = dbComputadores.ImagenesComps.FirstOrDefault(i => i.NombreImagen == nombreImagen);
+                if (img == null)
+                {
+                    respuesta = "La imagen no existe";
+                }
+                else
+                {
+                    dbComputadores.ImagenesComps.Remove(img);
+                    dbComputadores.SaveChanges();
+                    respuesta = "Imagen eliminada correctamente de la base de datos";
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta = "Error al eliminar imagen: " + ex.Message;
             }
             return respuesta;
         }

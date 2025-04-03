@@ -105,5 +105,13 @@ namespace Computadores.Controllers
                 return "Error al eliminar computador: " + ex.Message;
             }
         }
+
+        [HttpGet]
+        [Route("ConsultarImagenes")]
+        public IQueryable ConsultarImagenes(int codigoComp)
+        {
+            clsComputador clsComputador = new clsComputador();
+            return clsComputador.ListarImagenesxComputador(codigoComp);
+        }
     }
 }

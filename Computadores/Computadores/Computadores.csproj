@@ -163,8 +163,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Clases\clsComputador.cs" />
+    <Compile Include="Clases\clsUpload.cs" />
     <Compile Include="Controllers\ComputadoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UploadFilesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -192,6 +194,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBComputadores.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImagenesComp.cs">
+      <DependentUpon>DBComputadores.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>DBComputadores.tt</DependentUpon>
@@ -226,8 +231,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\DBComputadores.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBComputadores.Context.cs</LastGenOutput>
       <DependentUpon>DBComputadores.edmx</DependentUpon>
+      <LastGenOutput>DBComputadores.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\DBComputadores.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -289,6 +294,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Archivos\" />
+    <Folder Include="Views\UploadFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\bootstrap.min.js.map" />

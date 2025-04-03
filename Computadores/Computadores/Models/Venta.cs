@@ -22,10 +22,12 @@ namespace Computadores.Models
         public System.DateTime FechaVenta { get; set; }
         public int Valor { get; set; }
 
-        [JsonIgnore]    
+        [JsonIgnore]
         public virtual Agencia Agencia { get; set; }
+
         [JsonIgnore]
         public virtual Cliente Cliente { get; set; }
+
         [JsonIgnore]
         public virtual Computador Computador { get; set; }
     }

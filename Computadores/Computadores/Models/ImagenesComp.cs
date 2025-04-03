@@ -13,20 +13,13 @@ namespace Computadores.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoComputador
+    public partial class ImagenesComp
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoComputador()
-        {
-            this.Computadors = new HashSet<Computador>();
-        }
-    
         public int Codigo { get; set; }
-        public string Descripcion { get; set; }
+        public string NombreImagen { get; set; }
+        public int CodigoComputador { get; set; }
 
         [JsonIgnore]
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Computador> Computadors { get; set; }
+        public virtual Computador Computador { get; set; }
     }
 }

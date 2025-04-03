@@ -38,6 +38,14 @@
           <Property Name="CapacidadMemoria" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Componentes" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
+        <EntityType Name="ImagenesComp">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreImagen" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodigoComputador" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -75,6 +83,18 @@
             </Principal>
             <Dependent Role="Computador">
               <PropertyRef Name="CodigoTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Imagen_Computador">
+          <End Role="Computador" Type="Self.Computador" Multiplicity="1" />
+          <End Role="ImagenesComp" Type="Self.ImagenesComp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Computador">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ImagenesComp">
+              <PropertyRef Name="CodigoComputador" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -118,12 +138,17 @@
           <EntitySet Name="Agencia" EntityType="Self.Agencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Computador" EntityType="Self.Computador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImagenesComp" EntityType="Self.ImagenesComp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoComputador" EntityType="Self.TipoComputador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Venta" EntityType="Self.Venta" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Computador_TipoComputador" Association="Self.FK_Computador_TipoComputador">
             <End Role="TipoComputador" EntitySet="TipoComputador" />
             <End Role="Computador" EntitySet="Computador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Imagen_Computador" Association="Self.FK_Imagen_Computador">
+            <End Role="Computador" EntitySet="Computador" />
+            <End Role="ImagenesComp" EntitySet="ImagenesComp" />
           </AssociationSet>
           <AssociationSet Name="FK_Venta_Agencia" Association="Self.FK_Venta_Agencia">
             <End Role="Agencia" EntitySet="Agencia" />
@@ -178,7 +203,17 @@
           <Property Name="CapacidadMemoria" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Componentes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="TipoComputador" Relationship="Self.FK_Computador_TipoComputador" FromRole="Computador" ToRole="TipoComputador" />
+          <NavigationProperty Name="ImagenesComps" Relationship="Self.FK_Imagen_Computador" FromRole="Computador" ToRole="ImagenesComp" />
           <NavigationProperty Name="Ventas" Relationship="Self.FK_Venta_Computador" FromRole="Computador" ToRole="Venta" />
+        </EntityType>
+        <EntityType Name="ImagenesComp">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreImagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodigoComputador" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Computador" Relationship="Self.FK_Imagen_Computador" FromRole="ImagenesComp" ToRole="Computador" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -248,6 +283,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Imagen_Computador">
+          <End Role="Computador" Type="Self.Computador" Multiplicity="1" />
+          <End Role="ImagenesComp" Type="Self.ImagenesComp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Computador">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ImagenesComp">
+              <PropertyRef Name="CodigoComputador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Venta_Computador">
           <End Role="Computador" Type="Self.Computador" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
@@ -260,10 +307,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBComputadoresEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBComputadoresEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Agencias" EntityType="Self.Agencia" />
           <EntitySet Name="Clientes" EntityType="Self.Cliente" />
           <EntitySet Name="Computadors" EntityType="Self.Computador" />
+          <EntitySet Name="ImagenesComps" EntityType="Self.ImagenesComp" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TipoComputadors" EntityType="Self.TipoComputador" />
           <EntitySet Name="Ventas" EntityType="Self.Venta" />
@@ -279,6 +327,10 @@
             <End Role="TipoComputador" EntitySet="TipoComputadors" />
             <End Role="Computador" EntitySet="Computadors" />
           </AssociationSet>
+          <AssociationSet Name="FK_Imagen_Computador" Association="Self.FK_Imagen_Computador">
+            <End Role="Computador" EntitySet="Computadors" />
+            <End Role="ImagenesComp" EntitySet="ImagenesComps" />
+          </AssociationSet>
           <AssociationSet Name="FK_Venta_Computador" Association="Self.FK_Venta_Computador">
             <End Role="Computador" EntitySet="Computadors" />
             <End Role="Venta" EntitySet="Ventas" />
@@ -289,7 +341,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBComputadoresModelStoreContainer" CdmEntityContainer="DBComputadoresEntities">
+        <EntityContainerMapping StorageEntityContainer="DBComputadoresModelStoreContainer" CdmEntityContainer="DBComputadoresEntities2">
           <EntitySetMapping Name="Agencias">
             <EntityTypeMapping TypeName="DBComputadoresModel.Agencia">
               <MappingFragment StoreEntitySet="Agencia">
@@ -323,6 +375,15 @@
                 <ScalarProperty Name="CapacidadSD" ColumnName="CapacidadSD" />
                 <ScalarProperty Name="CapacidadMemoria" ColumnName="CapacidadMemoria" />
                 <ScalarProperty Name="Componentes" ColumnName="Componentes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImagenesComps">
+            <EntityTypeMapping TypeName="DBComputadoresModel.ImagenesComp">
+              <MappingFragment StoreEntitySet="ImagenesComp">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="NombreImagen" ColumnName="NombreImagen" />
+                <ScalarProperty Name="CodigoComputador" ColumnName="CodigoComputador" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

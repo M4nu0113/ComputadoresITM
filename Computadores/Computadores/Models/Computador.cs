@@ -18,6 +18,7 @@ namespace Computadores.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Computador()
         {
+            this.ImagenesComps = new HashSet<ImagenesComp>();
             this.Ventas = new HashSet<Venta>();
         }
     
@@ -31,6 +32,10 @@ namespace Computadores.Models
 
         [JsonIgnore]
         public virtual TipoComputador TipoComputador { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        [JsonIgnore]
+        public virtual ICollection<ImagenesComp> ImagenesComps { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
         [JsonIgnore]

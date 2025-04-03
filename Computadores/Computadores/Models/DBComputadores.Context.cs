@@ -13,10 +13,10 @@ namespace Computadores.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBComputadoresEntities : DbContext
+    public partial class DBComputadoresEntities2 : DbContext
     {
-        public DBComputadoresEntities()
-            : base("name=DBComputadoresEntities")
+        public DBComputadoresEntities2()
+            : base("name=DBComputadoresEntities2")
         {
         }
     
@@ -28,6 +28,7 @@ namespace Computadores.Models
         public virtual DbSet<Agencia> Agencias { get; set; }
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<Computador> Computadors { get; set; }
+        public virtual DbSet<ImagenesComp> ImagenesComps { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TipoComputador> TipoComputadors { get; set; }
         public virtual DbSet<Venta> Ventas { get; set; }

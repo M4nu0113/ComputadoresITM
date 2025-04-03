@@ -123,3 +123,14 @@ GO
 
 SELECT * FROM [Venta]
 GO
+
+CREATE TABLE [ImagenesComp]
+( 
+	[Codigo] INT IDENTITY(1,1) NOT NULL,
+	[NombreImagen] VARCHAR(50) NOT NULL,
+	[CodigoComputador] INT NOT NULL,
+	CONSTRAINT [PKImagen] PRIMARY KEY CLUSTERED ([Codigo]),
+	CONSTRAINT [FK_Imagen_Computador] FOREIGN KEY ([CodigoComputador]) REFERENCES [dbo].[Computador]([Codigo])
+) ON [PRIMARY]
+
+GO
